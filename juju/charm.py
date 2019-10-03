@@ -12,39 +12,13 @@ class PostSeriesUpgradeEvent(EventBase): pass
 class LeaderElectedEvent(EventBase): pass
 class LeaderSettingsChangedEvent(EventBase): pass
 
-
-class RelationEventBase(EventBase):
-    def __init__(self, handle, relation_name):
-        super().__init__(handle)
-        self.relation_name = relation_name
-
-    def snapshot(self):
-        return {'relation_name': self.relation_name}
-
-    def restore(self, snapshot):
-        self.relation_name = snapshot['relation_name']
-
-
-class RelationJoinedEvent(RelationEventBase): pass
-class RelationChangedEvent(RelationEventBase): pass
-class RelationDepartedEvent(RelationEventBase): pass
-class RelationBrokenEvent(RelationEventBase): pass
-
-
-class StorageEventBase(EventBase):
-    def __init__(self, handle, storage_name):
-        super().__init__(handle)
-        self.storage_name = storage_name
-
-    def snapshot(self):
-        return {'storage_name': self.storage_name}
-
-    def restore(self, snapshot):
-        self.storage_name = snapshot['storage_name']
-
-
-class StorageAttachedEvent(StorageEventBase): pass
-class StorageDetachingEvent(StorageEventBase): pass
+# TODO: These relations will need to be given more contextual info about the event
+class RelationJoinedEvent(EventBase): pass
+class RelationChangedEvent(EventBase): pass
+class RelationDepartedEvent(EventBase): pass
+class RelationBrokenEvent(EventBase): pass
+class StorageAttachedEvent(EventBase): pass
+class StorageDetachingEvent(EventBase): pass
 
 
 class CharmEvents(EventsBase):
