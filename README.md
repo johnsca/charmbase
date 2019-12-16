@@ -14,7 +14,7 @@ Start by creating a charm directory with at least the following files:
 Then install the framework into the `lib/` directory using:
 
 ```
-pip install -t lib/ https://github.com/canonical/operator
+pip install -t lib/ https://github.com/canonical/operator/archive/master.tar.gz
 ```
 
 Your `lib/charm.py` is the entry point for your charm logic. At a minimum, it
